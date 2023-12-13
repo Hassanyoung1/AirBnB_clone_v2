@@ -11,7 +11,6 @@ import os
 from datetime import datetime
 
 
-@task
 def do_pack():
     """ Check if the 'versions' directory exists; create it if not """
     local("mkdir -p versions")
