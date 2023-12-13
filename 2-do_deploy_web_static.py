@@ -1,17 +1,18 @@
 #!/usr/bin/python3
+
 """
 A Fabric script (based on the file 1-pack_web_static.py)
 that distributes an archive to your web servers
 """
 from fabric.api import env, put, run
-from os import path
+import os
 import re
 
-# Define the list of web servers
+""" Define the list of web servers """
 env.hosts = ['35.175.132.72', '54.237.1.243']
 
 
-# Fabric function to deploy an archive to the web servers
+""" Fabric function to deploy an archive to the web servers """
 def do_deploy(archive_path):
     """
     Deploy the specified archive to the web servers.
