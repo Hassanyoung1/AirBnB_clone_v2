@@ -13,18 +13,17 @@ from datetime import datetime
 
 @task
 def do_pack():
-    # Check if the 'versions' directory exists; create it if not
-    if not os.path.exists("versions"):
-        local("mkdir versions")
+    """ Check if the 'versions' directory exists; create it if not """
+    local("mkdir -p versions")
 
-    # Generate a timestamp for the tarball filename
+    """ Generate a timestamp for the tarball filename """
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     target_tgz_file = "versions/web_static_{}.tgz".format(timestamp)
 
-    # Create a compressed tarball of the 'web_static' folder
+    """ Create a compressed tarball of the 'web_static' folder """
     result = local("tar -cvzf {} web_static".format(target_tgz_file))
 
-    # Check if the tarball creation was successful
+    """ Check if the tarball creation was successful """
     if result.ok:
         return target_tgz_file
     else:
