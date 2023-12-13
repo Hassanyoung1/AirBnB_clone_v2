@@ -6,7 +6,7 @@ the contents of the web_static folder of your AirBnB Clone repo,
 using the function do_pack
 """
 
-from fabric.api import run as local
+from fabric.api import local
 import os
 from datetime import datetime
 
