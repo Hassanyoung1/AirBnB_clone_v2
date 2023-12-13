@@ -51,4 +51,3 @@ def do_deploy(archive_path):
 
     """ Deployment successful """
     return True
-
