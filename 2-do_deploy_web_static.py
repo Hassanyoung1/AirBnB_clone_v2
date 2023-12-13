@@ -9,13 +9,14 @@ import re
 
 env.hosts = ['35.175.132.72', '54.237.1.243']
 
+
 def do_deploy(archive_path):
     if not path.exists(archive_path):
         return False
 
     put(archive_path, "/tmp/")
-    archive  = path.basename(archive_path)
-    rm_ext = archive_filename.split(".")[0]
+    archive = path.basename(archive_path)
+    rm_ext = archive.split(".")[0]
     uncompress_path = f"/data/web_static/releases/{rm_ext}"
 
     run(f"mkdir -p {uncompress_path}")
