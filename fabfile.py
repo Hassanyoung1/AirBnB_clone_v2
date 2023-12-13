@@ -6,8 +6,8 @@ from datetime import datetime
 
 @task
 def do_pack(c):
-    if not os.path.exists("versions"):
-        local("mkdir versions")
+
+    local("mkdir -p versions")
 
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     target_tgz_file = "versions/web_static_{}.tgz".format(timestamp)
