@@ -11,8 +11,9 @@ import re
 """ Define the list of web servers """
 env.hosts = ['35.175.132.72', '54.237.1.243']
 
-
 """ Fabric function to deploy an archive to the web servers """
+
+
 def do_deploy(archive_path):
     """
     Deploy the specified archive to the web servers.
