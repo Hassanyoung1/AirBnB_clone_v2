@@ -51,5 +51,4 @@ def do_deploy(c, archive_path):
         except Exception as e:
             print(f"Deployment failed on {connection.host}: {e}")
 
-    return True  # You can modify this based on your needs
-
+        return True  # You can modify this based on your needs

@@ -23,7 +23,7 @@ def do_pack():
     result = local("tar -cvzf {} web_static".format(target_tgz_file))
 
     """ Check if the tarball creation was successful """
-    if result.ok:
+    if result.succeeded:
         return target_tgz_file
     else:
         return None
