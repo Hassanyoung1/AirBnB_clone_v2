@@ -9,9 +9,7 @@ from fabric.api import *
 from os import path
 
 """ Define the user, hosts, and key file for Fabric environment """
-env.user = "ubuntu"
 env.hosts = ["54.237.1.243", "35.175.132.72"]
-env.key_filename = "/root/.ssh/school"
 
 
 def do_deploy(archive_path):
@@ -49,7 +47,9 @@ def do_deploy(archive_path):
 
         """ Create symbolic link to the new vers of the web_static folder """
         run(f"ln -s {archive_folder} /data/web_static/current")
+        run("sudo service nginx restart")
         return True
     except BaseException:
         """ Return False if an except occurs during the deployment process """
         return False
+
