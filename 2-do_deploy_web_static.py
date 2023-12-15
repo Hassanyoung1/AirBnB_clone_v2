@@ -52,4 +52,3 @@ def do_deploy(archive_path):
     except BaseException:
         """ Return False if an except occurs during the deployment process """
         return False
-
