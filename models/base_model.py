@@ -40,6 +40,7 @@ class BaseModel():
         self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
+        storage.close()
 
     def delete(self):
         """Delete the current instance from the storage"""
@@ -58,3 +59,7 @@ class BaseModel():
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
         return dictionary
+    def save(self):
+        from models import storage
+        self.updated_at = datetime.now()
+        storage.save()

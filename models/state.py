@@ -25,3 +25,11 @@ class State(BaseModel, Base):
             all_cities = storage.all(City)
             return [city for city in all_cities.values()
                     if city.state_id == self.id]
+        @property
+        def state(self):
+            """getter attribute state that returns the list of State instances
+            with state_id equals to the current State.id"""
+            from models import storage
+            all_states = storage.all(State)
+            return [state for state in all_states.values()
+                    if state.state_id == self.id]
