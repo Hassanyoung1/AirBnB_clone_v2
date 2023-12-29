@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """Importing flash module"""
-from flask import Flask
 
+from flask import Flask
+from markupsafe import escape
 """
 a script that starts a Flask web application:
 listening on 0.0.0.0, port 5000
 /: display “Hello HBNB!”
 /hbnb: display “HBNB”
+/c/<text>: display “C ” followed by the value of the text variable
+(replace underscore _ symbols with a space )
 """
 
 app = Flask(__name__)
@@ -26,14 +29,13 @@ def hello_hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def display_text(text):
-
     """
     Display text passed in as an argument
     Replace underscore symbols with a space
     return: The argument pased
     """
 
-    text = text.replace('_', '')
+    text = text.replace('_', ' ')
     return f"C {text}"
 
 
