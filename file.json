@@ -1,1 +1,13 @@
-{}
+{
+    "State.None": {
+        "name": "Arizona",
+        "updated_at": "2023-12-31T17:40:34.503621",
+        "__class__": "State"
+    },
+    "City.None": {
+        "state_id": null,
+        "name": "Page",
+        "updated_at": "2023-12-31T17:40:34.504824",
+        "__class__": "City"
+    }
+}

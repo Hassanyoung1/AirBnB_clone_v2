@@ -108,6 +108,7 @@ class DBStorage:
             self.__session = Session()
         except Exception as e:
             print("Error creating tables:", str(e))
+
     def close(self):
         """Method to close the session"""
         self.__session.close()
