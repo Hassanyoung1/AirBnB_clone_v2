@@ -23,6 +23,7 @@ the script.
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.city import City
 
 app = Flask(__name__)
 
@@ -48,10 +49,13 @@ def cities_list():
     Returns:
     - HTML: Rendered template displaying the sorted list of states.
     """
-    all_state = list(storage.all(State).values())
-    sorted_state = sorted(all_state, key=lambda x: x.name)
-    return render_template('8-cities_by_states.html', states=sorted_state)
+    states = storage.all(State).values()
+    for state in states:
+        state.cities = sorted(state.cities, key=lambda city: city.name)
+    states = sorted(states, key=lambda state: state.name)
+    return render_template('8-cities_by_states.html', states=states)
+
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5043, debug=True)
+    app.run(host='0.0.0.0', port=5046, debug=True)
