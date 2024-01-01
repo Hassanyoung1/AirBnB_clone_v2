@@ -19,42 +19,27 @@ Dependencies:
 Note: Make sure to have the necessary dependencies installed before running
 the script.
 """
-
-from flask import Flask, render_template
 from models import storage
+from flask import Flask, render_template
 from models.state import State
-from models.city import City
 
 app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def teardown_appcontext(exception):
-    """
-    Function to be called when the application context is popped.
-    It ensures that the storage is properly closed.
-
-    Parameters:
-    - exception (Exception): The exception,
-      if any, that triggered the teardown.
+def teardown(exception):
+    """A method to remove the current SQLAlchemy Session
     """
     storage.close()
 
 
-@app.route('/cities_by_states', strict_slashes=False)
-def cities_list():
-    """
-    Route to display a sorted list of states.
-
-    Returns:
-    - HTML: Rendered template displaying the sorted list of states.
+@app.route("/cities_by_states", strict_slashes=False)
+def states_list():
+    """A method to render an HTML page with a list of all State objects
     """
     states = storage.all(State).values()
-    for state in states:
-        state.cities = sorted(state.cities, key=lambda city: city.name)
-    states = sorted(states, key=lambda state: state.name)
-    return render_template('8-cities_by_states.html', states=states)
+    return render_template("8-cities_by_states.html", states=states)
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
