@@ -10,7 +10,7 @@ from models import storage
 from flask import Flask
 from flask import render_template
 from models.state import State
-from models.city import City
+
 app = Flask(__name__)
 
 
@@ -40,4 +40,4 @@ def teardown(exc):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5101, debug=True)
